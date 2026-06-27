@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "scraped": "2026-06-27",
+    "scraper": "Playwright MCP",
+    "note": "Zillow CDN URLs expire. Re-scrape headshot + listing photos before building. photoUrl fields in tabatha.ts are empty pending a clean Zillow session."
+  },
+  "headshot": {
+    "url": null,
+    "local": "/images/tabatha-headshot.jpg",
+    "blocked": true,
+    "note": "Zillow blocked before headshot img src could be extracted. Try scraping https://www.zillow.com/profile/tabathachase in a fresh session / different IP."
+  },
+  "listings": {
+    "15542-timberidge-ln-chino-hills-ca-91709": {
+      "url": null,
+      "local": "/images/listings/15542-timberidge-ln-chino-hills-ca-91709.jpg",
+      "blocked": true
+    },
+    "6755-foxcroft-ct-chino-ca-91710": {
+      "url": null,
+      "local": "/images/listings/6755-foxcroft-ct-chino-ca-91710.jpg",
+      "blocked": true
+    },
+    "5640-riverside-dr-apt-4-chino-ca-91710": {
+      "url": null,
+      "local": "/images/listings/5640-riverside-dr-apt-4-chino-ca-91710.jpg",
+      "blocked": true
+    },
+    "3318-valley-view-ave-norco-ca-92860": {
+      "url": null,
+      "local": "/images/listings/3318-valley-view-ave-norco-ca-92860.jpg",
+      "blocked": true
+    },
+    "16774-manning-st-victorville-ca-92394": {
+      "url": null,
+      "local": "/images/listings/16774-manning-st-victorville-ca-92394.jpg",
+      "blocked": true
+    },
+    "12234-greenleaf-ln-garden-grove-ca-92840": {
+      "url": null,
+      "local": "/images/listings/12234-greenleaf-ln-garden-grove-ca-92840.jpg",
+      "blocked": true
+    }
+  },
+  "brand": {
+    "logo": {
+      "url": null,
+      "local": "/images/tabatha-logo.png",
+      "note": "No standalone logo found. May exist on Instagram bio link or personal website."
+    }
+  },
+  "alternatives": {
+    "note": "Try these sources for headshot + listing photos once Zillow block clears:",
+    "sources": [
+      "https://www.homes.com/real-estate-agents/tabatha-chase/l7n115d/",
+      "https://www.instagram.com/socalivingbytabatha/",
+      "https://www.facebook.com/tabathachasesellshomes",
+      "https://www.linkedin.com/in/tabatha-chase-realtor/",
+      "https://www.fivrealty.com"
+    ]
+  }
+}

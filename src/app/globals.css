@@ -4,12 +4,40 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ===========================================================
+   Tabatha Chase — Design Tokens
+   Cloned from kim-bibb.com (Luxury Presence template).
+   See docs/research/DESIGN_TOKENS.md for source values.
+   =========================================================== */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --color-surface: var(--surface);            /* off-white section bg */
+  --color-accent-brand: var(--accent-brand);  /* navy #374D6D */
+  --color-overlay-dark: var(--overlay-dark);  /* hero/CTA gradient */
+
+  --font-sans: var(--font-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
   --font-heading: var(--font-sans);
+
+  /* Type scale from kim-bibb.com CSS variables */
+  --text-h1: 70px;
+  --text-h2: 43px;
+  --text-h3: 30px;
+  --text-h4: 21px;
+  --text-h5: 17px;
+  --text-h6: 16px;
+  --text-body: 16px;
+  --text-nav: 13px;
+  --text-btn: 14px;
+
+  /* Spacing */
+  --section-padding-desktop: 96px;
+  --section-padding-mobile: 64px;
+  --container-padding: 45px;
+  --container-padding-mobile: 20px;
+
+  /* shadcn token mappings (preserve primitives) */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -18,11 +46,6 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -39,92 +62,184 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Flat aesthetic — no radius on cards/buttons by default */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Core palette */
+  --background: #ffffff;
+  --foreground: #000000;
+  --surface: #f8f8f8;
+  --accent-brand: #374D6D;
+  --overlay-dark: rgba(0, 0, 0, 0.4);
+
+  /* shadcn tokens (kim-bibb black/white aesthetic) */
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #f8f8f8;
+  --secondary-foreground: #000000;
+  --muted: #f8f8f8;
+  --muted-foreground: #4b4b4b;
+  --accent: #f8f8f8;
+  --accent-foreground: #000000;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #374D6D;
+  --radius: 0px;
+  --sidebar: #f8f8f8;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #000000;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffffff;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #374D6D;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --surface: #1a1a1a;
+  --accent-brand: #5c7da4;
+  --overlay-dark: rgba(0, 0, 0, 0.6);
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #a3a3a3;
+  --accent: #1a1a1a;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #5c7da4;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #0a0a0a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #5c7da4;
 }
 
+/* ===========================================================
+   Base layer — kim-bibb typography & layout primitives
+   =========================================================== */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    scroll-behavior: smooth;
+    @apply font-sans;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-size: var(--text-body);
+    line-height: 1.6;
+    letter-spacing: 1px;
   }
-  html {
-    @apply font-sans;
+
+  /* All headings: uppercase + 1px tracking — kim-bibb signature */
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  h1 { font-size: clamp(40px, 8vw, var(--text-h1)); margin: 8px 0 24px; }
+  h2 { font-size: clamp(28px, 5vw, var(--text-h2)); margin-bottom: 24px; }
+  h3 { font-size: clamp(22px, 3vw, var(--text-h3)); }
+  h4 { font-size: var(--text-h4); }
+  h5 { font-size: var(--text-h5); }
+  h6 { font-size: var(--text-h6); }
+
+  p { margin-bottom: 25px; line-height: 1.6; }
+
+  a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--muted-foreground); }
+}
+
+/* ===========================================================
+   Reusable section utilities
+   =========================================================== */
+@layer components {
+  .section-padding {
+    padding-top: var(--section-padding-mobile);
+    padding-bottom: var(--section-padding-mobile);
+  }
+  @media (min-width: 769px) {
+    .section-padding {
+      padding-top: var(--section-padding-desktop);
+      padding-bottom: var(--section-padding-desktop);
+    }
+  }
+
+  .container-padding {
+    padding-left: var(--container-padding-mobile);
+    padding-right: var(--container-padding-mobile);
+  }
+  @media (min-width: 769px) {
+    .container-padding {
+      padding-left: var(--container-padding);
+      padding-right: var(--container-padding);
+    }
+  }
+
+  /* Kim-Bibb-style flat button */
+  .lp-btn {
+    @apply inline-block uppercase font-bold text-center cursor-pointer transition-colors;
+    font-size: var(--text-btn);
+    letter-spacing: 1.5px;
+    padding: 20px 46px;
+    border: 2px solid currentColor;
+    background: transparent;
+  }
+  .lp-btn-dark { color: #000; }
+  .lp-btn-dark:hover { color: #fff; background: #000; }
+  .lp-btn-light { color: #fff; }
+  .lp-btn-light:hover { color: #000; background: #fff; }
+
+  /* Slick-style PREV/NEXT text links */
+  .slick-text-arrow {
+    font-size: var(--text-btn);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .slick-text-arrow:hover { color: var(--accent-brand); }
+
+  /* WOW.js-style fade-up on scroll-in (CSS-only via IntersectionObserver) */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
