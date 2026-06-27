@@ -53,6 +53,9 @@ export const AGENT = {
   instagram: "https://www.instagram.com/socalivingbytabatha/",
   // source: https://www.facebook.com/tabathachasesellshomes
   facebook: "https://www.facebook.com/tabathachasesellshomes",
+  // source: https://www.youtube.com/@socalivingbytabathachase (canonical channelId UCi6MPXbBkvNjwlJ__T4wuDg)
+  youtube: "https://www.youtube.com/@socalivingbytabathachase",
+  youtubeChannelId: "UCi6MPXbBkvNjwlJ__T4wuDg",
   // source: https://www.zillow.com/profile/tabathachase
   zillowProfile: "https://www.zillow.com/profile/tabathachase",
   // source: https://www.homes.com/real-estate-agents/tabatha-chase/l7n115d/
@@ -135,9 +138,10 @@ export const LISTINGS_ACTIVE: Listing[] = [
     soldAs: "seller",
     // source: https://www.zillow.com/profile/tabathachase
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
-    // NOTE: hero image URL not captured (Zillow blocked before deep extraction)
-    photoUrl: "",
-    photoLocal: "",  // no file yet — components render gradient placeholder until populated
+    // source: https://photos.zillowstatic.com/fp/f99978dd696946acc51ce84c7fa4986e-cc_ft_960.jpg
+    // verified: Bing iusc alt text "1st image of 15542 Timberidge Ln"; screenshot verify-timberidge-zillow.jpg
+    photoUrl: "https://photos.zillowstatic.com/fp/f99978dd696946acc51ce84c7fa4986e-cc_ft_960.jpg",
+    photoLocal: "/images/listings/15542-timberidge-ln-chino-hills-ca-91709.jpg",
   },
 ];
 
@@ -161,8 +165,10 @@ export const LISTINGS_SOLD: Listing[] = [
     soldDate: "2026-06-04",  // approx — "Sold 23 days ago" from 2026-06-27
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
-    photoUrl: "",
-    photoLocal: "",  // no file yet — components render gradient placeholder until populated
+    // source: https://ssl.cdn-redfin.com/photo/45/bigphoto/293/TR26061293_6.jpg
+    // verified: Bing purl exact address; screenshot verify-foxcroft-redfin.jpg (2-story gray home, CRMLS)
+    photoUrl: "https://ssl.cdn-redfin.com/photo/45/bigphoto/293/TR26061293_6.jpg",
+    photoLocal: "/images/listings/6755-foxcroft-ct-chino-ca-91710.jpg",
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -180,8 +186,10 @@ export const LISTINGS_SOLD: Listing[] = [
     soldDate: "2025-06-01",  // approx — "Sold 1 year ago" from 2026-06-27
     soldAs: "seller",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
-    photoUrl: "",
-    photoLocal: "",  // no file yet — components render gradient placeholder until populated
+    // source: https://photos.zillowstatic.com/fp/850b451beb8c9c2e31d00d379a01a6c4-cc_ft_960.jpg
+    // verified: screenshot verify-riverside-condo.jpg (green 2-story exterior); unit "4" on door in verify-riverside-redfin.jpg
+    photoUrl: "https://photos.zillowstatic.com/fp/850b451beb8c9c2e31d00d379a01a6c4-cc_ft_960.jpg",
+    photoLocal: "/images/listings/5640-riverside-dr-apt-4-chino-ca-91710.jpg",
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -199,8 +207,10 @@ export const LISTINGS_SOLD: Listing[] = [
     soldDate: "2024-06-01",  // approx — "Sold 2 years ago" from 2026-06-27
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
-    photoUrl: "",
-    photoLocal: "",  // no file yet — components render gradient placeholder until populated
+    // source: https://ssl.cdn-redfin.com/photo/45/bigphoto/689/OC24113689_0.jpg
+    // verified: Bing purl exact address; screenshot verify-norco-valley-view.jpg (ranch-style, corral fence)
+    photoUrl: "https://ssl.cdn-redfin.com/photo/45/bigphoto/689/OC24113689_0.jpg",
+    photoLocal: "/images/listings/3318-valley-view-ave-norco-ca-92860.jpg",
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -218,8 +228,10 @@ export const LISTINGS_SOLD: Listing[] = [
     soldDate: "2023-06-01",  // approx — "Sold 3 years ago" from 2026-06-27
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
-    photoUrl: "",
-    photoLocal: "",  // no file yet — components render gradient placeholder until populated
+    // source: https://photos.zillowstatic.com/fp/10eb33f2b61a4d48bea0e8f3401fd3c8-cc_ft_1536.jpg
+    // verified: Zillow zpid 17428704 via Bing purl; screenshot verify-manning-victorville.jpg (2-story tan, 2-car garage, CRMLS)
+    photoUrl: "https://photos.zillowstatic.com/fp/10eb33f2b61a4d48bea0e8f3401fd3c8-cc_ft_1536.jpg",
+    photoLocal: "/images/listings/16774-manning-st-victorville-ca-92394.jpg",
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -237,8 +249,10 @@ export const LISTINGS_SOLD: Listing[] = [
     soldDate: "2023-06-01",  // approx — "Sold 3 years ago" from 2026-06-27
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
-    photoUrl: "",
-    photoLocal: "",  // no file yet — components render gradient placeholder until populated
+    // source: https://ssl.cdn-redfin.com/photo/45/bigphoto/122/OC23095122_0.jpg
+    // verified: screenshot verify-greenleaf.jpg shows "12234" clearly on blue door
+    photoUrl: "https://ssl.cdn-redfin.com/photo/45/bigphoto/122/OC23095122_0.jpg",
+    photoLocal: "/images/listings/12234-greenleaf-ln-garden-grove-ca-92840.jpg",
   },
   // NOTE: Zillow showed 10 total sold listings but only 5 were visible in the
   // carousel text extract before the page navigated away. The 5 additional
@@ -352,3 +366,31 @@ export const STATS = {
   // source: CA DRE license — Dec 11, 2014
   licensedSince: 2014,
 };
+
+export interface YouTubeVideo {
+  id: string;        // 11-char YouTube video ID
+  title: string;
+  publishedAt: string | null;  // ISO date
+}
+
+// source: https://www.youtube.com/feeds/videos.xml?channel_id=UCi6MPXbBkvNjwlJ__T4wuDg
+// Pulled via RSS on 2026-06-27. First entry is the user-provided featured video.
+// Featured "Buying & Selling at the same time!" pinned by client.
+export const YOUTUBE_VIDEOS: YouTubeVideo[] = [
+  { id: "DZMhP6EHC8k", title: "Buying & Selling at the same time!", publishedAt: null },
+  { id: "lpao4wLoL8I", title: "June 2, 2026", publishedAt: "2026-06-02" },
+  { id: "sbzRu1FE-JY", title: "May 27, 2026", publishedAt: "2026-05-27" },
+  { id: "j01AY0U38DA", title: "May 26, 2026", publishedAt: "2026-05-26" },
+  { id: "KE4SbogNXqA", title: "May 21, 2026", publishedAt: "2026-05-22" },
+  { id: "ra2vHU0vN94", title: "May 20, 2026", publishedAt: "2026-05-20" },
+  { id: "k72-UkJNbeE", title: "The \"Rent vs. Buy\" math just changed.", publishedAt: "2026-05-14" },
+  { id: "1M5cTlRfU20", title: "New construction in Ontario, CA", publishedAt: "2026-05-14" },
+  { id: "HMHUBfA3aws", title: "The 2026 Corona Housing Reality Check: Is the Market Crashing or Resetting?", publishedAt: "2026-03-20" },
+  { id: "R0IsfSkYuBE", title: "Most buyers lose homes for this reason.", publishedAt: "2026-02-04" },
+  { id: "cAPUL4Toqvc", title: "Surprising mistakes homebuyers make", publishedAt: "2024-03-20" },
+  { id: "HbznE7DaovI", title: "Buyer's Pro Tip!", publishedAt: "2024-03-09" },
+  { id: "M0GPI7s3tDo", title: "Top cities to move to in Southern California", publishedAt: "2024-01-11" },
+  { id: "XU71EN8cFxc", title: "What a buyer needs to know before starting the home search", publishedAt: "2024-01-11" },
+  { id: "L8ttVYALnG4", title: "December 7, 2023", publishedAt: "2023-12-08" },
+  { id: "I9M5z3Yiujk", title: "December 4, 2023", publishedAt: "2023-12-05" },
+];

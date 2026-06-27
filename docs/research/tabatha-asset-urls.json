@@ -1,8 +1,8 @@
 {
   "_meta": {
     "scraped": "2026-06-27",
-    "scraper": "Playwright MCP",
-    "note": "Zillow CDN URLs expire. Re-scrape headshot + listing photos before building. photoUrl fields in tabatha.ts are empty pending a clean Zillow session."
+    "scraper": "Playwright MCP + Bing image search",
+    "note": "Zillow CDN URLs may expire. Re-scrape before rebuilding if images 404. All photos verified via screenshot or Bing purl/title."
   },
   "headshot": {
     "url": null,
@@ -10,53 +10,68 @@
     "blocked": true,
     "note": "Zillow blocked before headshot img src could be extracted. Try scraping https://www.zillow.com/profile/tabathachase in a fresh session / different IP."
   },
-  "listings": {
-    "15542-timberidge-ln-chino-hills-ca-91709": {
-      "url": null,
-      "local": "/images/listings/15542-timberidge-ln-chino-hills-ca-91709.jpg",
-      "blocked": true
+  "listings": [
+    {
+      "slug": "15542-timberidge-ln-chino-hills-ca-91709",
+      "photoUrls": [
+        "https://photos.zillowstatic.com/fp/f99978dd696946acc51ce84c7fa4986e-cc_ft_960.jpg"
+      ],
+      "source": "zillow",
+      "sourceUrl": "https://www.zillow.com/homes/15542-Timberidge-Ln-Chino-Hills-CA-91709_rb/",
+      "verified": "alt text: '1st image of 15542 Timberidge Ln' from Bing iusc m.murl"
     },
-    "6755-foxcroft-ct-chino-ca-91710": {
-      "url": null,
-      "local": "/images/listings/6755-foxcroft-ct-chino-ca-91710.jpg",
-      "blocked": true
+    {
+      "slug": "6755-foxcroft-ct-chino-ca-91710",
+      "photoUrls": [
+        "https://ssl.cdn-redfin.com/photo/45/bigphoto/293/TR26061293_6.jpg"
+      ],
+      "source": "redfin",
+      "sourceUrl": "https://www.redfin.com/CA/Chino/6755-Foxcroft-Ct-91710/home/7291897",
+      "verified": "Bing purl exact address; screenshot verify-foxcroft-redfin.jpg shows 2-story gray home, CRMLS"
     },
-    "5640-riverside-dr-apt-4-chino-ca-91710": {
-      "url": null,
-      "local": "/images/listings/5640-riverside-dr-apt-4-chino-ca-91710.jpg",
-      "blocked": true
+    {
+      "slug": "5640-riverside-dr-apt-4-chino-ca-91710",
+      "photoUrls": [
+        "https://photos.zillowstatic.com/fp/850b451beb8c9c2e31d00d379a01a6c4-cc_ft_960.jpg",
+        "https://ssl.cdn-redfin.com/photo/45/bigphoto/594/IV25002594_0.jpg"
+      ],
+      "source": "zillow",
+      "sourceUrl": "https://www.zillow.com/homedetails/5640-Riverside-Dr-APT-4-Chino-CA-91710/",
+      "verified": "screenshot verify-riverside-condo.jpg shows green 2-story condo; verify-riverside-redfin.jpg shows unit '4' on door"
     },
-    "3318-valley-view-ave-norco-ca-92860": {
-      "url": null,
-      "local": "/images/listings/3318-valley-view-ave-norco-ca-92860.jpg",
-      "blocked": true
+    {
+      "slug": "3318-valley-view-ave-norco-ca-92860",
+      "photoUrls": [
+        "https://ssl.cdn-redfin.com/photo/45/bigphoto/689/OC24113689_0.jpg"
+      ],
+      "source": "redfin",
+      "sourceUrl": "https://www.redfin.com/CA/Norco/3318-Valley-View-Ave-92860/",
+      "verified": "Bing purl confirmed exact address; screenshot verify-norco-valley-view.jpg shows ranch-style 1-story with corral fence"
     },
-    "16774-manning-st-victorville-ca-92394": {
-      "url": null,
-      "local": "/images/listings/16774-manning-st-victorville-ca-92394.jpg",
-      "blocked": true
+    {
+      "slug": "16774-manning-st-victorville-ca-92394",
+      "photoUrls": [
+        "https://photos.zillowstatic.com/fp/10eb33f2b61a4d48bea0e8f3401fd3c8-cc_ft_1536.jpg"
+      ],
+      "source": "zillow",
+      "sourceUrl": "https://www.zillow.com/homedetails/16774-Manning-St-Victorville-CA-92394/17428704_zpid/",
+      "verified": "Zillow zpid 17428704 confirmed via Bing purl; screenshot verify-manning-victorville.jpg shows 2-story tan home with 2-car garage, CRMLS"
     },
-    "12234-greenleaf-ln-garden-grove-ca-92840": {
-      "url": null,
-      "local": "/images/listings/12234-greenleaf-ln-garden-grove-ca-92840.jpg",
-      "blocked": true
+    {
+      "slug": "12234-greenleaf-ln-garden-grove-ca-92840",
+      "photoUrls": [
+        "https://ssl.cdn-redfin.com/photo/45/bigphoto/122/OC23095122_0.jpg"
+      ],
+      "source": "redfin",
+      "sourceUrl": "https://www.redfin.com/CA/Garden-Grove/12234-Greenleaf-Ln-92840/",
+      "verified": "screenshot verify-greenleaf.jpg shows '12234' clearly on blue door"
     }
-  },
+  ],
   "brand": {
     "logo": {
       "url": null,
       "local": "/images/tabatha-logo.png",
       "note": "No standalone logo found. May exist on Instagram bio link or personal website."
     }
-  },
-  "alternatives": {
-    "note": "Try these sources for headshot + listing photos once Zillow block clears:",
-    "sources": [
-      "https://www.homes.com/real-estate-agents/tabatha-chase/l7n115d/",
-      "https://www.instagram.com/socalivingbytabatha/",
-      "https://www.facebook.com/tabathachasesellshomes",
-      "https://www.linkedin.com/in/tabatha-chase-realtor/",
-      "https://www.fivrealty.com"
-    ]
   }
 }

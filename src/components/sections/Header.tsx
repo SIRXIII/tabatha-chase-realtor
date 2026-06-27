@@ -124,6 +124,16 @@ export function Header() {
                   About
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
+              {/* Videos link */}
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="/videos"
+                  className={navLinkClass}
+                >
+                  Videos
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -219,6 +229,15 @@ export function Header() {
                   className="font-sans text-[13px] font-light tracking-[1.5px] uppercase text-black hover:text-[#374D6D] py-3 border-b border-black/10 transition-colors"
                 >
                   About
+                </Link>
+
+                {/* Videos */}
+                <Link
+                  href="/videos"
+                  onClick={() => setMobileOpen(false)}
+                  className="font-sans text-[13px] font-light tracking-[1.5px] uppercase text-black hover:text-[#374D6D] py-3 border-b border-black/10 transition-colors"
+                >
+                  Videos
                 </Link>
 
                 {/* Contact CTA */}

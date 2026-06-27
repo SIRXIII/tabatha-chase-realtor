@@ -6,6 +6,7 @@ const navLinks = [
   { label: "ACTIVE LISTINGS", href: "/properties/active" },
   { label: "SOLD PORTFOLIO", href: "/properties/sold" },
   { label: "ABOUT", href: "/about" },
+  { label: "VIDEOS", href: "/videos" },
   { label: "CONTACT", href: "/contact" },
 ];
 
