@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AGENT } from "@/data/tabatha";
 import { PhoneIcon, MailIcon, InstagramIcon, FacebookIcon } from "@/components/icons";
 
@@ -17,17 +18,16 @@ export function Team() {
 
         {/* Single agent card — centered, Tabatha only */}
         <div className="flex flex-col items-center">
-          {/* Headshot — gradient placeholder with TC initials */}
-          <div
-            className="w-64 h-80 bg-gradient-to-br from-stone-200 to-stone-400 flex items-center justify-center mb-6"
-            aria-label="Tabatha Chase headshot"
-          >
-            <span
-              className="text-4xl font-normal tracking-[2px] text-white uppercase select-none"
-              aria-hidden="true"
-            >
-              TC
-            </span>
+          {/* Headshot — real client photo */}
+          <div className="w-64 h-80 overflow-hidden mb-6 bg-stone-100">
+            <Image
+              src={AGENT.headshotLocal}
+              alt={`${AGENT.name} headshot`}
+              width={256}
+              height={320}
+              className="w-full h-full object-cover object-top"
+              priority
+            />
           </div>
 
           {/* Info block */}

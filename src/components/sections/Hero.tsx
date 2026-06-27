@@ -1,50 +1,33 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { AGENT, LISTINGS_ACTIVE } from "@/data/tabatha";
+import { AGENT } from "@/data/tabatha";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
-  const firstListing = LISTINGS_ACTIVE[0];
-  // Only use photoUrl if it is a non-empty string (the data has "" for blocked CDN URLs)
-  const cdnPhoto =
-    firstListing?.photoUrl && firstListing.photoUrl.trim().length > 0
-      ? firstListing.photoUrl
-      : null;
-  // Only use photoLocal if it resolves to an actual file path (starts with "/images/")
-  const localPhoto =
-    !cdnPhoto &&
-    firstListing?.photoLocal &&
-    firstListing.photoLocal.startsWith("/images/")
-      ? firstListing.photoLocal
-      : null;
-
   return (
     <section
       className="relative h-screen min-h-[600px] w-full overflow-hidden"
       aria-label="Hero"
     >
-      {/* Background — CDN photo > local photo > gradient */}
-      {cdnPhoto ? (
-        <img
-          src={cdnPhoto}
-          alt={firstListing!.address}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      ) : localPhoto ? (
-        <img
-          src={localPhoto}
-          alt={firstListing!.address}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-700 to-stone-900" />
-      )}
+      {/* Background — Tabatha's family photo rendered B&W for kim-bibb-style tonal fit */}
+      <Image
+        src={AGENT.familyPhotoLocal}
+        alt=""
+        fill
+        priority
+        className="object-cover object-center grayscale"
+        sizes="100vw"
+      />
 
-      {/* Dark overlay rgba(0,0,0,0.4) */}
+      {/* Dark overlay — heavier than other sections to keep white headline readable */}
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.75) 100%)",
+        }}
       />
 
       {/* Content — centered */}

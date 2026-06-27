@@ -8,38 +8,21 @@ import { cn } from "@/lib/utils";
 
 const BIO_PREVIEW_LENGTH = 280;
 
-function HeadshotImage() {
-  const headshotSrc = AGENT.headshotLocal;
-
-  // Treat empty string or placeholder path that doesn't exist as "no headshot"
-  const hasHeadshot = (headshotSrc as string).startsWith("/images/");
-
-  if (!hasHeadshot) {
-    // Gradient placeholder with initials
-    const initials = AGENT.name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .slice(0, 2);
-    return (
-      <div className="relative w-full h-full min-h-[480px] md:min-h-[715px] bg-gradient-to-br from-stone-300 to-stone-500 flex items-center justify-center">
-        <span className="text-white text-6xl font-light tracking-widest select-none">
-          {initials}
-        </span>
-      </div>
-    );
-  }
-
+function FamilyPortrait() {
+  // Use the family photo, rendered B&W to match kim-bibb-style flat aesthetic.
+  // Subtle color reveal on hover keeps the section editorial-feeling.
   return (
-    <Image
-      src={headshotSrc}
-      alt={AGENT.name}
-      width={600}
-      height={716}
-      className="w-full h-auto object-cover object-top"
-      priority={false}
-      style={{ maxHeight: "715px" }}
-    />
+    <div className="relative w-full overflow-hidden bg-stone-100">
+      <Image
+        src={AGENT.familyPhotoLocal}
+        alt={`${AGENT.name} with her family`}
+        width={960}
+        height={715}
+        className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-[filter] duration-700 ease-out"
+        priority={false}
+        style={{ maxHeight: "715px" }}
+      />
+    </div>
   );
 }
 
@@ -66,7 +49,7 @@ export function About() {
             )}
             style={{ transition: "opacity 0.5s linear, transform 0.5s ease" }}
           >
-            <HeadshotImage />
+            <FamilyPortrait />
           </div>
 
           {/* Right: Text */}

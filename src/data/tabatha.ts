@@ -88,7 +88,12 @@ export const AGENT = {
   specialties: ["Buyer's Agent", "Listing Agent", "Staging", "New Construction"],
   // source: https://www.zillow.com/profile/tabathachase
   headshotUrl: null as string | null,  // Zillow blocked before headshot URL could be extracted
-  headshotLocal: "",  // no file yet — About/Team render gradient placeholder with initials until populated
+  // source: client-provided photo at ~/Documents/Clients/TABATHA CHASE- REALTOR/Tabatha Profile Pic.jpg
+  headshotLocal: "/images/tabatha-headshot.jpg",
+  // source: client-provided family photo, rendered B&W via CSS to match kim-bibb-style flat aesthetic
+  familyPhotoLocal: "/images/tabatha-family.jpg",
+  // source: client-provided vacation photo (Cabo, family of 4)
+  vacationPhotoLocal: "/images/tabatha-vacation.jpg",
   // source: https://www.zillow.com/profile/tabathachase
   reviewCount: 23,
   avgRating: 5.0,
