@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Header } from "@/components/sections/Header";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Footer } from "@/components/sections/Footer";
@@ -142,6 +143,41 @@ export default function AboutPage() {
                 </span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Personal — Outside of real estate */}
+      <section className="bg-[#f8f8f8] section-padding">
+        <div className="container-padding max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <p className="text-base tracking-[1px] mb-3 text-black/60">OUTSIDE OF REAL ESTATE</p>
+              <h2 className="text-[43px] leading-tight tracking-[1px] uppercase font-normal mb-6">
+                Family first.
+              </h2>
+              <p className="text-base leading-relaxed mb-4 text-black">
+                When she is not walking buyers through their first home or staging a seller&apos;s
+                listing through Chase Designs, you will find Tabatha with her husband and two
+                boys — usually somewhere warm with palm trees and the ocean nearby.
+              </p>
+              <p className="text-base leading-relaxed text-black/80">
+                That same care she pours into her family is the one she brings to every client
+                relationship. It is why so many of her past buyers and sellers come back, and
+                why they send their friends.
+              </p>
+            </div>
+            <div className="order-1 md:order-2 overflow-hidden">
+              <Image
+                src={AGENT.vacationPhotoLocal}
+                alt={`${AGENT.name} with her family on vacation`}
+                width={960}
+                height={1280}
+                className="w-full h-auto object-cover"
+                style={{ maxHeight: "640px" }}
+                sizes="(min-width: 768px) 50vw, 100vw"
+              />
+            </div>
           </div>
         </div>
       </section>
