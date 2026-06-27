@@ -99,6 +99,8 @@ export const AGENT = {
     { brokerage: "Box Properties", period: "Apr 2024–Sep 2025" },
     { brokerage: "Fiv Realty Co.", period: "Sep 2025–present" },
   ],
+  // source: https://licensee.io/ca-real-estate/01968575-tabatha-lynn-chase/ (confirmed 2026-06-27)
+  dreExpiration: "2026-12-10",
   // source: earlier DRE research
   education: [
     { degree: "BA", school: "San Francisco State University" },
@@ -130,7 +132,7 @@ export const LISTINGS_ACTIVE: Listing[] = [
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
     // NOTE: hero image URL not captured (Zillow blocked before deep extraction)
     photoUrl: "",
-    photoLocal: "/images/listings/15542-timberidge-ln-chino-hills-ca-91709.jpg",
+    photoLocal: "",  // no file yet — components render gradient placeholder until populated
   },
 ];
 
@@ -155,7 +157,7 @@ export const LISTINGS_SOLD: Listing[] = [
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
     photoUrl: "",
-    photoLocal: "/images/listings/6755-foxcroft-ct-chino-ca-91710.jpg",
+    photoLocal: "",  // no file yet — components render gradient placeholder until populated
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -174,7 +176,7 @@ export const LISTINGS_SOLD: Listing[] = [
     soldAs: "seller",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
     photoUrl: "",
-    photoLocal: "/images/listings/5640-riverside-dr-apt-4-chino-ca-91710.jpg",
+    photoLocal: "",  // no file yet — components render gradient placeholder until populated
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -193,7 +195,7 @@ export const LISTINGS_SOLD: Listing[] = [
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
     photoUrl: "",
-    photoLocal: "/images/listings/3318-valley-view-ave-norco-ca-92860.jpg",
+    photoLocal: "",  // no file yet — components render gradient placeholder until populated
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -212,7 +214,7 @@ export const LISTINGS_SOLD: Listing[] = [
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
     photoUrl: "",
-    photoLocal: "/images/listings/16774-manning-st-victorville-ca-92394.jpg",
+    photoLocal: "",  // no file yet — components render gradient placeholder until populated
   },
   {
     // source: https://www.zillow.com/profile/tabathachase
@@ -231,7 +233,7 @@ export const LISTINGS_SOLD: Listing[] = [
     soldAs: "buyer",
     sourceUrl: "https://www.zillow.com/profile/tabathachase",
     photoUrl: "",
-    photoLocal: "/images/listings/12234-greenleaf-ln-garden-grove-ca-92840.jpg",
+    photoLocal: "",  // no file yet — components render gradient placeholder until populated
   },
   // NOTE: Zillow showed 10 total sold listings but only 5 were visible in the
   // carousel text extract before the page navigated away. The 5 additional

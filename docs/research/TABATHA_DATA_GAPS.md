@@ -1,7 +1,15 @@
 # Tabatha Chase — Data Gaps & Blocked Sources
 
 Scrape date: 2026-06-27
-Scraper: Playwright MCP (headless browser)
+Gap-fill pass: 2026-06-27 (6-tactic run)
+Scraper: Playwright MCP (headless browser) + WebFetch/WebSearch
+
+---
+
+## Status Summary (post gap-fill run)
+
+One field filled: **DRE license expiration date** (2026-12-10 — confirmed via licensee.io).
+All photo/review/listing gaps remain unfilled — every photo source blocked.
 
 ---
 
@@ -9,59 +17,73 @@ Scraper: Playwright MCP (headless browser)
 
 ### 1. Zillow (secondary load)
 - **URL**: https://www.zillow.com/profile/tabathachase
-- **Status**: BLOCKED — "Access to this page has been denied"
-- **What happened**: First load succeeded and yielded most data. All subsequent loads (same session, new session) returned bot-detection block page.
-- **Screenshot**: `docs/research/scrape-blockers/zillow-blocked-20260627T035423.png`
+- **Status**: BLOCKED — "Access to this page has been denied" on all attempts
 - **Missing data**: headshot URL, listing photo URLs, 13 of 23 reviews (reviews 11–23), 5 of 10 sold listings (listings 6–10)
-- **Fix**: Try with a residential IP / VPN or a manual browser session at off-peak hours
+- **Fix**: Residential IP / VPN, or manual browser session at off-peak hours
 
-### 2. Homes.com
+### 2. Zillow listing direct URLs
+- **Attempted**: All 6 listing Zillow detail pages (active + 5 sold)
+- **Status**: BLOCKED — HTTP 403 on all
+- **Fix**: Same as above — residential IP / logged-in browser session
+
+### 3. Homes.com
 - **URL**: https://www.homes.com/real-estate-agents/tabatha-chase/l7n115d/
-- **Status**: BLOCKED — `net::ERR_FAILED`
-- **What happened**: Navigation never completed. Network request failed before page loaded.
+- **Status**: BLOCKED — HTTP 403
 - **Missing data**: cross-check of reviews, alternative headshot, additional listing photos
-- **Fix**: May require a cookie-based session or non-headless browser
 
-### 3. Instagram
+### 4. Instagram
 - **URL**: https://www.instagram.com/socalivingbytabatha/
-- **Status**: BLOCKED — `net::ERR_ABORTED`
-- **What happened**: Instagram immediately aborts headless browser connections without a logged-in session.
-- **Missing data**: Bio link-in-bio URL, profile photo, recent post captions for brand voice
-- **Fix**: Requires a logged-in Instagram session (can use browser-harness with a saved profile)
+- **Status**: BLOCKED — net::ERR_ABORTED (headless) / requires login (WebFetch)
+- **Missing data**: bio link-in-bio URL, profile photo, recent post captions
+- **Mirrors tried**: Picuki.com (403), Imginn.com (403)
 
-### 4. Fiv Realty (agent profile page)
-- **URL**: https://www.fivrealty.com (searched for Tabatha Chase)
-- **Status**: NOT FOUND — GeoDirectory search returned "It seems we can't find what you're looking for"
-- **What happened**: Tabatha appears in the 223-agent list loaded via AJAX, but has no dedicated `/agent/tabatha-chase/` profile page on the site. Direct URL attempts returned 404.
-- **Missing data**: Brokerage-hosted bio, official headshot from broker
-- **Fix**: Contact Fiv Realty directly or scrape the AJAX agent list endpoint
+### 5. Linktree / personal website
+- **URL**: https://linktr.ee/socalivingbytabatha (guessed)
+- **Status**: HTTP 403
+- **Missing data**: personal website URL, link-in-bio destinations
 
-### 5. Google Search / Google Business Profile
-- **URL**: https://www.google.com (search: "Tabatha Chase realtor")
-- **Status**: BLOCKED — `net::ERR_ABORTED`
-- **What happened**: Google blocks headless browser navigation entirely.
-- **Missing data**: Google Business Profile rating, Google reviews, additional contact info
-- **Fix**: Use SerpAPI or similar
+### 6. Fiv Realty agent profile
+- **URL**: https://www.fivrealty.com/agents/tabatha-chase/
+- **Status**: HTTP 404 — no dedicated agent page exists
+- **Alternative**: paginated agent list at /agents/ — checked pages 1–4 of 19, Tabatha not found in first 48 agents
 
-### 6. Bing, DuckDuckGo, Facebook, LinkedIn
-- **Status**: All BLOCKED — `net::ERR_ABORTED`
-- **Fix**: Requires authenticated sessions or residential proxies
+### 7. BHHS California (Foxcroft listing)
+- **URL**: https://www.bhhscalifornia.com/listing-detail/6755-foxcroft-court-chino-ca-91710_7188014
+- **Status**: HTTP 429 (repeated rate limiting)
+
+### 8. Houzz — Chase Design profile
+- **URL**: https://www.houzz.com/professionals/interior-designers-and-decorators/chase-design-pfvwus-pf~436262790
+- **Status**: HTTP 429 (repeated rate limiting)
+
+### 9. Other sources tried
+| Source | Status | Notes |
+|--------|--------|-------|
+| CountyOffice.org | 403 | |
+| Redfin listing pages | 405 Method Not Allowed | CDN blocks WebFetch |
+| Compass (15542 Timberidge) | 410 Gone | Listing removed |
+| PropertySpark | 403 | |
+| rehold.com | Loaded, no photos | Only text property records |
+| NiceLocal.com | Redirect to unrelated site | |
+| Movoto | 429 | |
+| SignalHire | Loaded — placeholder avatar | No personal headshot |
+| Bing image search | Returned unrelated images | Technical diagrams, not Tabatha |
+| YouTube | Footer only rendered | No video metadata |
+| Google / Facebook / LinkedIn / DuckDuckGo | All blocked (headless) | |
 
 ---
 
 ## Missing Data Fields
 
-| Field | Status | Source to Try |
-|-------|--------|---------------|
-| Headshot URL | MISSING | Zillow (clean session), Homes.com, Instagram |
-| Listing photo URLs (all 6) | MISSING | Zillow (clean session), Homes.com |
-| Reviews 11–23 (13 reviews) | MISSING | Zillow (clean session) — carousel only showed 10 |
-| Sold listings 6–10 | MISSING | Zillow (clean session) — carousel only showed 5 |
-| Instagram bio / link-in-bio | MISSING | Instagram (logged-in session) |
-| Google rating + Google reviews | MISSING | SerpAPI or manual |
-| Personal website URL | MISSING | Instagram link-in-bio, Google |
-| Full bio text | PARTIAL | Zillow bio truncated at "Show more" — need second load |
-| DRE license expiration date | MISSING | https://www.dre.ca.gov/ (scrape-able) |
+| Field | Status | Source to Try Next |
+|-------|--------|-------------------|
+| Headshot URL | MISSING | Residential IP Zillow scrape; or manual download |
+| Listing photo URLs (all 6) | MISSING | Residential IP Zillow scrape |
+| Reviews 11–23 (13 reviews) | MISSING | Zillow (clean session from different IP) |
+| Sold listings 6–10 | MISSING | Zillow (clean session from different IP) |
+| Instagram bio / link-in-bio | MISSING | browser-harness with saved Instagram profile cookie |
+| Personal website URL | MISSING | Find via Instagram link-in-bio |
+| Full bio text | PARTIAL | Zillow bio truncated at "Show more" |
+| DRE license expiration | FILLED ✓ | Confirmed 2026-12-10 via licensee.io (2026-06-27) |
 
 ---
 
@@ -72,17 +94,18 @@ Scraper: Playwright MCP (headless browser)
 - 5 of 10 sold listings (complete: address, price, beds/baths/sqft, approx sold date, agent role)
 - 10 of 23 reviews (author, date, truncated text — all 5.0 stars)
 - Profile stats (23 reviews, 5.0 avg, 10 total sales, 12 years experience)
-- Brokerage info (Fiv Realty Co., Eastvale CA)
+- Brokerage info (Fiv Realty Co., Eastvale CA) + brokerage history
 - Contact info (both phone numbers, email)
 - Service area list (10 cities)
+- Education (BA SFSU, AA Orange Coast College)
+- **DRE expiry: 2026-12-10** (added in gap-fill pass)
 - Profile screenshot: `docs/design-references/tabatha-screenshots/zillow-profile.png`
 
 ---
 
 ## Recommended Next Steps
 
-1. **Headshot + listing photos**: Run a fresh Zillow scrape from a different IP or residential proxy. Extract all `img` tags from `.agent-profile-headshot` and `.listing-card img` before Zillow detects the bot.
-2. **Remaining 13 reviews**: Same fresh Zillow session — scroll/click through the full review carousel and extract text.
-3. **Instagram**: Use `browser-harness` with a saved Instagram profile cookie to grab bio and link-in-bio.
-4. **Personal website**: Once Instagram loads, find Linktree or personal site URL from bio link.
-5. **DRE lookup**: https://www.dre.ca.gov/Licensees/LicenseeSearch.aspx — scrape-able, no login required.
+1. **Headshot + listing photos + remaining reviews + sold listings 6-10**: Fresh Zillow session from residential IP (or SerpAPI-based scrape). Single session can get all of these.
+2. **Instagram data**: Use `browser-harness` with a saved Instagram profile cookie (`browser-harness/interaction-skills/profile-sync.md`).
+3. **Personal website**: Find via Instagram link-in-bio once Instagram loads.
+4. **BHHS listing photos (Foxcroft)**: Wait for rate limit cooldown, retry https://www.bhhscalifornia.com/listing-detail/6755-foxcroft-court-chino-ca-91710_7188014
