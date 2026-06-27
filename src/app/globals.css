@@ -232,13 +232,25 @@
   }
   .slick-text-arrow:hover { color: var(--accent-brand); }
 
-  /* WOW.js-style fade-up on scroll-in (CSS-only via IntersectionObserver) */
-  .fade-up {
+  /*
+   * Fade-up + WOW.js compat classes.
+   * Default state is VISIBLE — never gate above-the-fold content on JS or
+   * scroll-driven animations. Real scroll-reveals will be wired via the
+   * useInView hook with the opt-in `.fade-up-init` class.
+   */
+  .fade-up,
+  .wow,
+  .fadeInUp,
+  .fadeIn {
+    opacity: 1;
+    transform: none;
+  }
+  .fade-up-init {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
-  .fade-up.in-view {
+  .fade-up-init.in-view {
     opacity: 1;
     transform: translateY(0);
   }

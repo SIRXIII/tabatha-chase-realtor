@@ -88,7 +88,7 @@ export const AGENT = {
   specialties: ["Buyer's Agent", "Listing Agent", "Staging", "New Construction"],
   // source: https://www.zillow.com/profile/tabathachase
   headshotUrl: null as string | null,  // Zillow blocked before headshot URL could be extracted
-  headshotLocal: "/images/tabatha-headshot.jpg",
+  headshotLocal: "",  // no file yet — About/Team render gradient placeholder with initials until populated
   // source: https://www.zillow.com/profile/tabathachase
   reviewCount: 23,
   avgRating: 5.0,
