@@ -1,20 +1,51 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  variable: "--font-serif",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  metadataBase: new URL("https://tabathachase.com"),
+  title: {
+    default: "Tabatha Chase | SoCal Realtor — Corona, Yorba Linda, Eastvale, Riverside",
+    template: "%s | Tabatha Chase",
+  },
+  description:
+    "Tabatha Chase (DRE 01968575) at Fiv Realty Co. — Southern California real estate with interior design expertise and complimentary staging. Making life beautiful one home at a time.",
+  keywords: [
+    "Tabatha Chase",
+    "Corona realtor",
+    "Yorba Linda realtor",
+    "Eastvale realtor",
+    "Riverside realtor",
+    "Anaheim realtor",
+    "Fiv Realty",
+    "SoCal real estate",
+  ],
+  openGraph: {
+    title: "Tabatha Chase | SoCal Realtor",
+    description:
+      "Making life beautiful one home at a time. Corona, Yorba Linda, Eastvale, Riverside, Anaheim.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Tabatha Chase",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tabatha Chase | SoCal Realtor",
+    description: "Making life beautiful one home at a time.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -25,9 +56,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
+        {children}
+      </body>
     </html>
   );
 }
