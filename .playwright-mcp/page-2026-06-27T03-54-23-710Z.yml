@@ -1,6 +1,0 @@
-- generic [ref=e1]:
-  - img "Logo" [ref=e2]
-  - generic [ref=e3]:
-    - text: Press & Hold to confirm you are
-    - text: a human (and not a bot).
-  - generic [ref=e8]: Reference ID cfd44e90-71db-11f1-a274-113307781771

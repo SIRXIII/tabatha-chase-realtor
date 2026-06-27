@@ -50,3 +50,5 @@ temp/
 .open-next/
 .wrangler/
 .dev.vars
+.playwright-mcp/
+.impeccable/
